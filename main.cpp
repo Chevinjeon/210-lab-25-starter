@@ -67,6 +67,33 @@ long long sort_vector(vector<string>& vec) {
 
 // Sort list
 long long sort_list(list<string>& lst) {
+    auto start = high_resolution_clock::now();
+    lst.sort();
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Insert into middle of vector
+long long insert_vector(vector<string>& vec) {
+    auto start = high_resolution_clock::now();
+    vec.insert(vec.begin() + vec.size() / 2, TEST_VALUE);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Insert into middle of list
+long long insert_list(list<string>& lst) {
+    auto start = high_resolution_clock::now();
+    auto it = lst.begin();
+    advance(it, lst.size() / 2);
+    lst.insert(it, TEST_VALUE);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
 int main() {
     
 
