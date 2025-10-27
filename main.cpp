@@ -94,6 +94,37 @@ long long insert_list(list<string>& lst) {
     return duration.count();
 }
 
+// Insert into set 
+long long insert_set(set<string>& st) { 
+    auto start = high_resolution_clock::now(); 
+    st.insert(TEST_VALUE);
+    auto stop = high_resolution_clock::now(); 
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Delete from middle of vector
+long long delete_vector(vector<string>& vec) {
+    auto start = high_resolution_clock::now();
+    vec.erase(vec.begin() + vec.size() / 2);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Delete from middle of set
+long long delete_set(set<string>& st) {
+    auto start = high_resolution_clock::now();
+    if (!st.empty()) {
+        auto it = st.begin();
+        advance(it, st.size() / 2);
+        st.erase(it);
+    }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
 int main() {
     
 
