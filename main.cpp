@@ -125,6 +125,27 @@ long long delete_set(set<string>& st) {
     return duration.count();
 }
 
+// Display results table
+void display_results(const vector<string>& operations, 
+                    const vector<long long>& vector_times,
+                    const vector<long long>& list_times,
+                    const vector<long long>& set_times) {
+    cout << left << setw(12) << "Operation" 
+         << setw(12) << "Vector" 
+         << setw(12) << "List" 
+         << "Set" << endl;
+    cout << string(48, '-') << endl;
+
+    for (size_t i = 0; i < operations.size(); i++) {
+        cout << left << setw(12) << operations[i];
+        cout << setw(12) << vector_times[i];
+        cout << setw(12) << list_times[i];
+        if (set_times[i] == -1) {
+            cout << "-1" << endl;
+        }
+    }
+}
+
 int main() {
     
 
