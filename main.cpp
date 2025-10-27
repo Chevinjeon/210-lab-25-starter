@@ -112,6 +112,17 @@ long long delete_vector(vector<string>& vec) {
     return duration.count();
 }
 
+// Delete from middle of list
+long long delete_list(list<string>& lst) {
+    auto start = high_resolution_clock::now();
+    auto it = lst.begin();
+    advance(it, lst.size() / 2);
+    lst.erase(it);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
 // Delete from middle of set
 long long delete_set(set<string>& st) {
     auto start = high_resolution_clock::now();
@@ -142,6 +153,8 @@ void display_results(const vector<string>& operations,
         cout << setw(12) << list_times[i];
         if (set_times[i] == -1) {
             cout << "-1" << endl;
+        } else {
+            cout << set_times[i] << endl;
         }
     }
 }
