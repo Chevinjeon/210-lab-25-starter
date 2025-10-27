@@ -16,7 +16,57 @@ const int NUM_ELEMENTS = 20000;
 // Read data into vector
 long long read_vector(vector<string>& vec) {
     auto start = high_resolution_clock::now();
+    ifstream file(DATA_FILE);
+    string line;
+    while (getline(file, line)) {
+        vec.push_back(line);
+    }
+    file.close();
     
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Read data into list 
+long long read_list(list<string>& lst) {
+    auto start = high_resolution_clock::now();
+    ifstream file(DATA_FILE);
+    string line;
+    while (getline(file, line)) {
+        lst.push_back(line);
+    }
+    file.close();
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Read data into set
+long long read_set(set<string>& st) {
+    auto start = high_resolution_clock::now();
+    ifstream file(DATA_FILE);
+    string line; 
+    while (getline (file, line)) {
+        st.insert(line);
+    }
+    file.close();
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Sort vector
+long long sort_vector(vector<string>& vec) {
+    auto start = high_resolution_clock::now();
+    sort(vec.begin(), vec.end());
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    return duration.count();
+}
+
+// Sort list
+long long sort_list(list<string>& lst) {
 int main() {
     
 
