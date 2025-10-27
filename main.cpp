@@ -147,8 +147,86 @@ void display_results(const vector<string>& operations,
 }
 
 int main() {
+    cout << "Data Structures Race - Lab 25\n";
+    cout << "=============================\n\n";
     
-
+    // Storage for results
+    vector<string> operations;
+    vector<long long> vector_times, list_times, set_times;
+    
+    cout << "\n*** Race 1: READING ***\n";
+    vector<string> vec1;
+    list<string> lst1;
+    set<string> st1;
+    
+    long long t1 = read_vector(vec1);
+    long long t2 = read_list(lst1);
+    long long t3 = read_set(st1);
+    
+    operations.push_back("Read");
+    vector_times.push_back(t1);
+    list_times.push_back(t2);
+    set_times.push_back(t3);
+    
+    cout << "Vector: " << t1 << " microseconds\n";
+    cout << "List:   " << t2 << " microseconds\n";
+    cout << "Set:    " << t3 << " microseconds\n\n";
+    
+    cout << "\n*** Race 2: SORTING ***\n";
+    vector<string> vec2 = vec1;
+    list<string> lst2 = lst1;
+    
+    long long t4 = sort_vector(vec2);
+    long long t5 = sort_list(lst2);
+    
+    operations.push_back("Sort");
+    vector_times.push_back(t4);
+    list_times.push_back(t5);
+    set_times.push_back(-1);  // Set is already sorted
+    
+    cout << "Vector: " << t4 << " microseconds\n";
+    cout << "List:   " << t5 << " microseconds\n";
+    cout << "Set:    -1 (already sorted)\n\n";
+    
+    cout << "\n*** Race 3: INSERTING ***\n";
+    vector<string> vec3 = vec2;
+    list<string> lst3 = lst2;
+    set<string> st3 = st1;
+    
+    long long t6 = insert_vector(vec3);
+    long long t7 = insert_list(lst3);
+    long long t8 = insert_set(st3);
+    
+    operations.push_back("Insert");
+    vector_times.push_back(t6);
+    list_times.push_back(t7);
+    set_times.push_back(t8);
+    
+    cout << "Vector: " << t6 << " microseconds\n";
+    cout << "List:   " << t7 << " microseconds\n";
+    cout << "Set:    " << t8 << " microseconds\n\n";
+    
+    cout << "\n*** Race 4: DELETING ***\n";
+    vector<string> vec4 = vec2;  // Use pre-insert state
+    list<string> lst4 = lst2;
+    set<string> st4 = st1;
+    
+    long long t9 = delete_vector(vec4);
+    long long t10 = delete_list(lst4);
+    long long t11 = delete_set(st4);
+    
+    operations.push_back("Delete");
+    vector_times.push_back(t9);
+    list_times.push_back(t10);
+    set_times.push_back(t11);
+    
+    cout << "Vector: " << t9 << " microseconds\n";
+    cout << "List:   " << t10 << " microseconds\n";
+    cout << "Set:    " << t11 << " microseconds\n\n";
+    
+    cout << "\n*** FINAL RESULTS ***\n";
+    display_results(operations, vector_times, list_times, set_times);
+    
     return 0;
 }
 
